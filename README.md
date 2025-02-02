@@ -4,13 +4,13 @@ If you've ever found yourself wrestling with creating new regex patterns during 
 
 
 ## Why would I need this?
--If you need to generate regex values that needs to change in runtime and you dont want to write repeated code or relearn regex again for the 100th time.
+- If you need to generate regex values that needs to change in runtime and you dont want to write repeated code or relearn regex again for the 100th time.
 
--You have specific text that changes and you want an easy way to capture specific data in a predictable manner out of the box.(Fetch Tailwind values from the text)
+- You have specific text that changes and you want an easy way to capture specific data in a predictable manner out of the box.(Fetch Tailwind values from the text)
 
--You require user input regex generation, allowing the user to fetch their own data from a text via regex.
+- You require user input regex generation, allowing the user to fetch their own data from a text via regex.
 
--Perhaps you need to make complex search filters, input validators or any text parsers where regex is applied
+- Perhaps you need to make complex search filters, input validators or any text parsers where regex is applied
 
 And More!
 
