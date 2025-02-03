@@ -1,5 +1,10 @@
 "use strict";
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.RegExMaker = void 0;
+exports.RegMake = RegMake;
 var _utils = require("./utils");
 var _types = require("./types");
 /**
@@ -252,6 +257,7 @@ class RegExMaker {
  * 
  * For more info: [Documentation](https://github.com)
  */
+exports.RegExMaker = RegExMaker;
 function RegMake() {
   return new RegExMaker();
 }
@@ -286,7 +292,3 @@ function RegMake() {
 //note that we want to record the expected runtime of this whole thing below:
 //for accessing the dict ->
 // //o(m)(o(n)) where n is the size of teh dictionary which we loop, and  n is the size of the list of the keys
-module.exports = {
-  RegMake,
-  RegExMaker
-};

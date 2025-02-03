@@ -1,6 +1,6 @@
 //tests
 import { RegMake } from './src/test';
-import RegExMaker from './src/test';
+import {RegExMaker}from './src/test';
 
 
 describe('RegExMaker', () => {

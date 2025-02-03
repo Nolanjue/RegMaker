@@ -319,7 +319,7 @@ function RegMake(): RegExMaker {
 //note that we want to record the expected runtime of this whole thing below:
 //for accessing the dict ->
 // //o(m)(o(n)) where n is the size of teh dictionary which we loop, and  n is the size of the list of the keys
-module.exports = { RegMake, RegExMaker };
+export { RegMake, RegExMaker };
 
 
 
