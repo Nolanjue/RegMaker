@@ -1,8 +1,8 @@
 {
-  "name": "RegMaker",
-  "version": "1.0.0",
+  "name": "regmaker",
+  "version": "1.0.1",
   "description": "A custom dynamic regex creation and customization util for applications ",
-  "main": "dist/",
+  "main": "dist/test.js",
   "files": ["dist"],
   "bin": {
     "mytool": "dist/test.js"
@@ -26,5 +26,9 @@
     "type-check": "tsc --noEmit",
     "prepublishOnly": "npm run type-check && npm run build"
     
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nolanjue/RegMaker.git"
   }
 }

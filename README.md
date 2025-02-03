@@ -39,7 +39,7 @@ Here's a quick example to get you started:
 Give it an string example, tell it what you want found from the example or some queries, and have it ready for you!
 
 ```typescript
-import { RegMake } from 'regex-maker';
+import { RegMake } from 'regmaker';
 
 // Create your regex maker
 const regexMaker = RegMake();
@@ -80,7 +80,6 @@ I've included a bunch of patterns you'll probably need:
 Here's something neat - you can merge patterns together:
 
 ```typescript
-const regexMaker = RegMake();
 
 // Start with one pattern
 let value_attr = { any_number: ["2"] };
@@ -105,7 +104,6 @@ console.log(regexMaker.matchAll(input, true));
 Need something specific? No problem, Create your own expression you want to capture:
 
 ```typescript
-const regexMaker = RegMake();
 
 // Add your own pattern
 regexMaker.add_custom("custom_pattern", "\\w{10}");
