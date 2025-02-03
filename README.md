@@ -82,7 +82,7 @@ Here's something neat - you can merge patterns together:
 ```typescript
 
 // Start with one pattern
-let value_attr = { any_number: ["2"] };
+value_attr = { any_number: ["2"] };
 regexMaker.create_exp("p-[2rem]", value_attr, true, ['g']);
 
 // Add another
@@ -109,7 +109,7 @@ Need something specific? No problem, Create your own expression you want to capt
 regexMaker.add_custom("custom_pattern", "\\w{10}");
 
 // Use it
-const value_attr = {};
+value_attr = {};
 regexMaker.create_exp("(1232151913)", value_attr, true, ['g'], {
     "custom_pattern": "1232151913"
 });

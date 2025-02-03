@@ -80,7 +80,7 @@ class RegExMaker {
 
             if (newTypes) {
                 
-                insertRegexCharacters(newTypes, this.regexMap, inserted_EXP, filled_indices)
+                insertRegexCharacters(newTypes, this.usersMap, inserted_EXP, filled_indices)
             }
 
             let orig_str_index = 0;
