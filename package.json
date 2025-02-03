@@ -1,9 +1,11 @@
 {
   "name": "regmaker",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A custom dynamic regex creation and customization util for applications ",
   "main": "dist/test.js",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "bin": {
     "mytool": "dist/test.js"
   },
@@ -25,7 +27,6 @@
     "build": "babel src --out-dir dist --extensions \".ts,.tsx\"",
     "type-check": "tsc --noEmit",
     "prepublishOnly": "npm run type-check && npm run build"
-    
   },
   "repository": {
     "type": "git",
