@@ -5,6 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.RegMake = RegMake;
 exports.default = void 0;
+var _utils = require("./utils");
 var _types = require("./types");
 /**
  * A utility for generating and managing dynamic regular expressions to be used during runtime if needed.
@@ -52,7 +53,7 @@ class RegExMaker {
   * *  #### Example:
   * ```
   *const regexMaker = RegMake()
-  *value_attr = { any_number: ["2"], any_word: 'p' }
+  *let value_attr = { any_number: ["2"], any_word: 'p' }
   *const firstExample = "p-[2rem]"
   *regexMaker.create_exp(firstExample, value_attr, true, ['g'])
   *console.log(regexMaker.current_regex)
@@ -69,51 +70,16 @@ class RegExMaker {
   * 
   * @returns The final regex pattern as a string(you can also reference this value from `current_regex`)
   * 
-  * 
+  *
   */
   create_exp(desired_example, value_attr, capture_values = false, flags, newTypes) {
     let inserted_EXP = desired_example;
     let final_EXP = '';
     let filled_indices = {};
     try {
-      for (let regex_character of Object.keys(value_attr)) {
-        let desired_value = this.regexMap[regex_character];
-        const current_value = value_attr[regex_character];
-        if (!desired_value || !current_value) continue;
-        if (typeof current_value === "string") {
-          const startIndex = inserted_EXP.indexOf(current_value);
-          if (startIndex === -1) continue;
-          const inputEnd = startIndex + current_value.length;
-          filled_indices[startIndex] = [startIndex, inputEnd, regex_character];
-        } else {
-          for (let value_to_change of current_value) {
-            const startIndex = inserted_EXP.indexOf(value_to_change);
-            if (startIndex === -1) continue;
-            const inputEnd = startIndex + value_to_change.length;
-            filled_indices[startIndex] = [startIndex, inputEnd, regex_character];
-          }
-        }
-      }
+      (0, _utils.insertRegexCharacters)(value_attr, this.regexMap, inserted_EXP, filled_indices);
       if (newTypes) {
-        for (let regex_character of Object.keys(newTypes)) {
-          console.log("reg", regex_character);
-          let desired_value = this.usersMap[regex_character];
-          let current_value = newTypes[regex_character];
-          if (!desired_value || !current_value) continue;
-          if (typeof current_value === "string") {
-            const startIndex = inserted_EXP.indexOf(current_value);
-            if (startIndex === -1) continue;
-            const inputEnd = startIndex + current_value.length;
-            filled_indices[startIndex] = [startIndex, inputEnd, regex_character];
-          } else {
-            for (let value_to_change of current_value) {
-              const startIndex = inserted_EXP.indexOf(value_to_change);
-              if (startIndex === -1) continue;
-              const inputEnd = startIndex + value_to_change.length;
-              filled_indices[startIndex] = [startIndex, inputEnd, regex_character];
-            }
-          }
-        }
+        (0, _utils.insertRegexCharacters)(newTypes, this.regexMap, inserted_EXP, filled_indices);
       }
       let orig_str_index = 0;
       while (orig_str_index < inserted_EXP.length) {
@@ -185,7 +151,7 @@ class RegExMaker {
   * ```
   *const regexMaker = RegMake()
   *
-  *value_attr = { any_number: ["2"]}
+  *let value_attr = { any_number: ["2"]}
   *const firstRegex = "p-[2rem]"
   *regexMaker.create_exp(firstRegex, value_attr, true, ['g'])
     *value_attr = { any_number: ["90"] };
@@ -193,15 +159,15 @@ class RegExMaker {
   *regexMaker.merge_exp(secondRegex, value_attr, true,);
     *value_attr = { any_number: ["500"] }
   *const thirdRegex = "bg-indigo-500"
-  *regexMaker.merge_exp(anotherExample, value_attr, true, ['g'])
+  *regexMaker.merge_exp(thirdRegex, value_attr, true, ['g'])
     *const input = "p-[4rem] w-[40%] bg-indigo-500";
   * 
   *console.log(regexMaker.current_regex)
   * //see matchAll to see logic behind output
   *console.log(regexMaker.matchAll(input, true))
   * //Output:
-  * R'/(\w+)-\[(\d+)rem\]|(\w+)-\[(\d+)%\]|bg-(\w+)-(\d+)/g
-  * [ 'p', '4', 'w', '40', 'indigo', '500' ]
+  * R'/p-\[(\d+)rem\]|w-\[(\d+)%\]|bg-indigo-(\d+)/g
+  * [ '4', '40', '500' ]
   * 
   * ```
    * @param {string} desired_example - An example of a string you want to capture and manipulate with the preceding params.
@@ -297,6 +263,25 @@ function RegMake() {
 
 // Create an instance of RegExMaker
 const regexMaker = RegMake();
+let value_attr = {
+  any_number: ["2"]
+};
+const firstRegex = "p-[2rem]";
+regexMaker.create_exp(firstRegex, value_attr, true, ['g']);
+value_attr = {
+  any_number: ["90"]
+};
+const secondRegex = "w-[90%]";
+regexMaker.merge_exp(secondRegex, value_attr, true);
+value_attr = {
+  any_number: ["500"]
+};
+const thirdRegex = "bg-indigo-500";
+regexMaker.merge_exp(thirdRegex, value_attr, true, ['g']);
+const input = "p-[4rem] w-[40%] bg-indigo-500";
+console.log(regexMaker.current_regex);
+//see matchAll to see logic behind output
+console.log(regexMaker.matchAll(input, true));
 
 // regexMaker.add_custom("add_value", "\\w{10}")
 // const regex1 = regexMaker.create_exp("(1232151913)", value_attr,true, ['g'], {"add_value": "1232151913"});
