@@ -261,33 +261,33 @@ exports.RegExMaker = RegExMaker;
 function RegMake() {
   return new RegExMaker();
 }
-const regexMaker = RegMake();
-let value_attr = {
-  any_number: ["2"]
-};
-const firstRegex = "p-[2rem]";
-regexMaker.create_exp(firstRegex, value_attr, true, ['g']);
-value_attr = {
-  any_number: ["90"]
-};
-const secondRegex = "w-[90%]";
-regexMaker.merge_exp(secondRegex, value_attr, true);
-value_attr = {
-  any_number: ["500"]
-};
-const thirdRegex = "bg-indigo-500";
-regexMaker.merge_exp(thirdRegex, value_attr, true, ['g']);
-const input = "p-[4rem] w-[40%] bg-indigo-500";
-console.log(regexMaker.current_regex);
-//see matchAll to see logic behind output
-console.log(regexMaker.matchAll(input, true));
-regexMaker.add_custom("add_value", "\\w{10}");
-const regex1 = regexMaker.create_exp("(1232151913)", value_attr, true, ['g'], {
-  "add_value": "1232151913"
-});
-console.log(regexMaker.usersMap);
-console.log(regexMaker.current_regex);
-console.log(regexMaker.exec('(1231233129)'));
+
+// Create an instance of RegExMaker
+// const regexMaker = RegMake()
+
+// let value_attr = { any_number: ["2"]}
+// const firstRegex = "p-[2rem]"
+// regexMaker.create_exp(firstRegex, value_attr, true, ['g'])
+
+// value_attr = { any_number: ["90"] };
+// const secondRegex = "w-[90%]";
+// regexMaker.merge_exp(secondRegex, value_attr, true,);
+
+// value_attr = { any_number: ["500"] }
+// const thirdRegex = "bg-indigo-500"
+// regexMaker.merge_exp(thirdRegex, value_attr, true, ['g'])
+
+// const input = "p-[4rem] w-[40%] bg-indigo-500";
+
+// console.log(regexMaker.current_regex)
+// //see matchAll to see logic behind output
+// console.log(regexMaker.matchAll(input, true))
+
+// regexMaker.add_custom("add_value", "\\w{10}")
+// const regex1 = regexMaker.create_exp("(1232151913)", value_attr,true, ['g'], {"add_value": "1232151913"});
+// console.log(regexMaker.usersMap)
+// console.log(regexMaker.current_regex)
+// console.log(regexMaker.exec('(1231233129)'))
 
 //note that we want to record the expected runtime of this whole thing below:
 //for accessing the dict ->

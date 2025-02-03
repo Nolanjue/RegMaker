@@ -103,6 +103,8 @@ console.log(regexMaker.matchAll(input, true));
 
 Need something specific? No problem, Create your own expression you want to capture:
 
+(Note: The value in the newType param will overwrite the value_attr param's value if they are identical...)
+
 ```typescript
 
 // Add your own pattern
