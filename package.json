@@ -1,6 +1,6 @@
 {
   "name": "regmaker",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A custom dynamic regex creation and customization util for applications ",
   "main": "dist/test.js",
   "files": [
