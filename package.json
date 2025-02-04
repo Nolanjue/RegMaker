@@ -31,5 +31,13 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Nolanjue/RegMaker.git"
-  }
+  },
+  "keywords": [
+    "regex",
+    "regmaker",
+    "regex generator",
+    "generator",
+    "runtime"
+  ],
+  "license": "MIT"
 }
