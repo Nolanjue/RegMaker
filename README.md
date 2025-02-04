@@ -28,9 +28,9 @@ And More!
 Pop this into your terminal:
 
 ```bash
-npm install regex-maker
+npm install regmaker
 # or if you're using yarn
-yarn add regex-maker
+yarn add regmaker
 ```
 
 ## 🎮 Let's See It In Action
